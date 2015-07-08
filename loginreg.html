@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<!-- Registration Page for Munchable App -->
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+</head>
+<body onload="setButton()">
+    <h1>Welcome</h1>
+    <form method="post"> <!-- *****action="http://htmlcssvqs.com/8ed/examples/chapter-16/show-data.php" enctype="multipart/form-data"-->
+
+<!-- Email Address -->
+    <fieldset>   
+        <p class="row">
+            <label for="email">Email Address<span class="required"></span></label>
+            <input type="text" id="email" name="email" class="field-large" required="required" aria-required="true" onchange="validate()"/>
+        </p>
+    </fieldset>
+
+<!-- Password --> 
+    <fieldset>   
+        <p class="row">
+            <label for="password">Password<span class="required"></span></label>
+            <input type="password" id="password" name="password" class="field-large" required="required" aria-required="true"/>
+        </p>
+    </fieldset> 
+        
+<!-- Submit button to post the data -->
+    <input type="submit" value="Submit" class="btn"/>
+    </form>
+        
+    <script src="formvalidation.js"></script>  
+</body>
+</html>
+
