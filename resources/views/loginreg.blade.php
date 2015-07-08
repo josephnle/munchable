@@ -10,6 +10,18 @@
     <h1>Sign up</h1>
     <form method="post"> <!-- *****action="http://htmlcssvqs.com/8ed/examples/chapter-16/show-data.php" enctype="multipart/form-data"-->
 
+<!-- First and Last Name --> 
+    <fieldset>   
+        <p class="row">
+            <label for="first-name">First Name<span class="required"></span></label>
+            <input type="text" id="first-name" name="first_name" class="field-large" required="required" aria-required="true"/>
+        </p>
+        <p class="row">
+            <label for="last-name">Last Name<span class="required"></span></label>
+            <input type="text" id="last-name" name="last_name" class="field-large" required="required" aria-required="true"/>
+        </p>
+    </fieldset> 
+
 <!-- Email Address -->
     <fieldset>   
         <p class="row">
