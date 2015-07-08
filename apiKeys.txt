@@ -1,0 +1,14 @@
+Yelp
+Consumer Key: pRAhGjfu5MVQXs_6ps0HlA
+Consumer Secret: MOs_gWYfJclXVYXKAFQhMDnX1aQ
+Token: Q0AQqG-Pj1ux3BFPvluQx9LdE4lUkncD
+Token Secret: pkMZW885u5pyWZLd3KwZ-BzXMtc
+
+
+
+Postmates
+
+
+
+
+Uber
