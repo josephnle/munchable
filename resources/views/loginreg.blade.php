@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <title>Sign Up</title>
 </head>
-<body>
-    <h1>Sign up</h1>
+<body style="align:center;">
+    <h1>Sign Up</h1>
     <form method="post"> <!-- *****action="http://htmlcssvqs.com/8ed/examples/chapter-16/show-data.php" enctype="multipart/form-data"-->
 
 <!-- First and Last Name --> 
