@@ -7,8 +7,10 @@ Token Secret: pkMZW885u5pyWZLd3KwZ-BzXMtc
 
 
 Postmates
-
-
+Client ID: HJYN5QVLVCJ5QYM43M1DGK40SN4L1D1K4WEMKBXWWM4KHRWW
+Client Secret: KJSVREUAP0M51NRDVMNPRJPLDG5M42TQMPVVABLIFP5SWJ5K
+Access Token URL: https://foursquare.com/oauth2/access_token
+Authorize URL: https://foursquare.com/oauth2/authorize
 
 
 Uber
