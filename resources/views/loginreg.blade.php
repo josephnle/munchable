@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>Sign Up</title>
 </head>
-<body style="align:center;">
+<body>
     <h1>Sign Up</h1>
     <form method="post"> <!-- *****action="http://htmlcssvqs.com/8ed/examples/chapter-16/show-data.php" enctype="multipart/form-data"-->
 
