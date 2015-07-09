@@ -20,28 +20,24 @@
 	//$RESTAURANTID ='4bf58dd8d48988d1c4941735';
 	$DEFAULT_CATEGORYID = $FOODID;
 
-	$defaultarray = array("ll"=>$DEFAULT_LL,"radius"=>$DEFAULT_RADIUS,"categoryId"=>$DEFAULT_CATEGORYID);
+	$defaultarray = array("ll"=>$DEFAULT_LL,"radius"=>$DEFAULT_RADIUS,"section"=>'food');
 
-	function buildParamArray($currentlocation, $radius, $category)
+	function buildParamArray($currentlocation, $radius)
 	{
 		$radius = $radius*1609.34;
 
-		if($category == 'Food')
-		{
-			$categoryId = '4d4b7105d754a06374d81259';
-		}
-		else if($category == 'Restaurant')
-		{
-			'4bf58dd8d48988d1c4941735';
-		}
-		return $paramarray = array('ll'=>$currentlocation, 'radius'=>$radius, 'categoryId'=>$categoryId);
+		return $paramarray = array('ll'=>$currentlocation, 'radius'=>$radius, 'categoryId'=>'food', 'offset'=>20);
 	}
 
 
+	function getVenuefromItems($item)
+	{
+		return $item['venue'];
+	}
 
 	function venueSearch($foursquare, $paramarray)
 	{
-		$venuesjson = $foursquare->GetPublic('venues/search', $paramarray, $POST=false);
+		$venuesjson = $foursquare->GetPublic('venues/explore', $paramarray, $POST=false);
 		$venues = json_decode($venuesjson, true);
 		/*
 		foreach($venues['response']['venues'] as $venue)
@@ -49,8 +45,9 @@
 			echo $venue['name']."\n";
 		}
 		*/
-		return $venues['response']['venues'];
-		
+		$itemsArray = $venues['response']['groups'][0]['items'];
+		$venues = array_map("getVenuefromItems",$itemsArray);
+		return $venues;
 	}
 
 	function venueByID($foursquare,$venue)
@@ -100,7 +97,7 @@
 	}
 	*/
 
-/*
+
 	function distanceCalculation($point1_lat, $point1_long, $point2_lat, $point2_long, $unit = 'km', $decimals = 2) {
 	// Calculate the distance in degrees
 	$degrees = rad2deg(acos((sin(deg2rad($point1_lat))*sin(deg2rad($point2_lat))) + (cos(deg2rad($point1_lat))*cos(deg2rad($point2_lat))*cos(deg2rad($point1_long-$point2_long)))));
@@ -118,7 +115,7 @@
 	}
 	return round($distance, $decimals);
 }
-*/
+
 
 	function getCategory($venue)
 	{
@@ -130,9 +127,24 @@
 		return $venue['location']['addresss'];
 	}
 
-	function getDistance($venue)
+
+
+	/*NOTE WROTE THIS BECAUSE SEARCH BY VENUE ID DOESN'T RETURN
+	A DISTANCE BECAUSE IT DOESN'T REQUIRE A CURRENT LOCATION
+	PARAMETER, BUT WE HAVEN'T IMPLEMENTED YET SO I'M NOT YET GOING TO TEST IT*/
+	function getDistance($venue/*, $currentlat, $currentlng*/)
 	{
-		return round(($venue['location']['distance'])/1609.34,1);
+		$dist = $venue['location']['distance'];
+		if (isset($dist))
+		{
+			return round($dist/1609.34,1);
+		}
+		/*
+		else
+		{
+			return distanceCalculation($venue['location']['lat'], $venue['location']['lng'], $currentlat, $currentlng, $unit = 'mi', $decimals = 1)
+		}
+		*/
 	}
 
 	function tipFromInfo($tipInfo)
@@ -154,12 +166,22 @@
 		}
 	}
 
-	function getPhotoInfoArray($foursquare, $venue)
+	function photoFromInfo($photoInfo)
+	{
+		if(isset($photoInfo['prefix']) and isset($photoInfo['suffix']))
+		{
+			return (rtrim($photoInfo['prefix'],"/").$photoInfo['suffix']);
+		}
+	}
+
+	function getPhotos($foursquare, $venue)
 	{
 		$venue2 = venueByID($foursquare, $venue);
 		if (isset($venue2['response']['venue']['photos']['groups'][0]['items']))
 		{
-			return $venue2['response']['venue']['photos']['groups'][0]['items'];
+			$photoInfoArray = $venue2['response']['venue']['photos']['groups'][0]['items'];
+			$photoArray = array_map("photoFromInfo", $photoInfoArray);
+			return $photoArray;
 		}
 	}
 
@@ -172,12 +194,18 @@
 		}
 	}
 
-	//$venue = venueSearch($foursquare, $defaultarray)[5];
+	$venue = venueSearch($foursquare, $defaultarray)[1];
 
-	//var_dump($venue['name']);
-	//var_dump(getTips($foursquare, $venue));
-	//echo getPrice($foursquare, $venue)."\n";
-	//var_dump(getTips($foursquare, $venue));
+	var_dump($venue['name']);
+
+	var_dump(getPhotos($foursquare, $venue));
+	echo getDistance($venue)."\n";
+	var_dump(getTips($foursquare, $venue));
+
+
+	//$venuesjson = $foursquare->GetPublic('venues/explore', $defaultarray, $POST=false);
+	//$venues = json_decode($venuesjson, true);
+	//var_dump($venues['response']['groups'][0]['items'])
 
 
 ?>
