@@ -10,6 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
 
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 </head>
 <body>
@@ -42,7 +43,10 @@
 
 @yield('content')
 
-<script src="{{ elixir('js/app.js') }}"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js"></script>
+<script type="text/javascript" src="{{ elixir('js/app.js') }}"></script>
 
 </body>
 </html>
