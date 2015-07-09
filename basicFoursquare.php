@@ -130,33 +130,43 @@
 		return $venue['location']['addresss'];
 	}
 
-/*
-	function calculateDistance($currentlat, $currentlong, $venue)
+	function getDistance($venue)
 	{
-
+		return round(($venue['location']['distance'])/1609.34,1);
 	}
-*/
+
 	function getTips($foursquare, $venue)
 	{
 		$venue2 = venueByID($foursquare,$venue);
-		if (isset($venue2['response']['venue']['tips']['groups'][0]['items']));
-		return $venue2['response']['venue']['tips']['groups'][0]['items'];
+		if (isset($venue2['response']['venue']['tips']['groups'][0]['items']))
+		{
+			return $venue2['response']['venue']['tips']['groups'][0]['items'];
+		}
 	}
 
 	function getPhotos($foursquare, $venue)
 	{
 		$venue2 = venueByID($foursquare, $venue);
-		if (isset($venue2['response']['venue']['photos']['groups'][0]['items']));
-		return $venue2['response']['venue']['photos']['groups'][0]['items'];
+		if (isset($venue2['response']['venue']['photos']['groups'][0]['items']))
+		{
+			return $venue2['response']['venue']['photos']['groups'][0]['items'];
+		}
 	}
 
-	$venue = venueSearch($foursquare, $defaultarray)[3];
-	var_dump($venue['name']);
-	var_dump(getPhotos($foursquare, $venue));
+	function getPrice($foursquare, $venue)
+	{
+		$venue2 = venueByID($foursquare, $venue);
+		if (isset($venue2['response']['venue']['price']))
+		{
+			return $venue2['response']['venue']['price']['tier'];
+		}
+	}
 
+	//$venue = venueSearch($foursquare, $defaultarray)[5];
 
-
-
+	//var_dump($venue['name']);
+	//echo getPrice($foursquare, $venue)."\n";
+	//var_dump(getPhotos($foursquare, $venue));
 
 
 ?>
