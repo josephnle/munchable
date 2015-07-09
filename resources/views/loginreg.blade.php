@@ -5,8 +5,26 @@
 <head>
     <meta charset="utf-8">
     <title>Sign Up</title>
+    <style>
+        p {
+            text-transform: lowercase;
+            font-size: 13pt;
+            font-weight: 300;
+        }
+        h1 {
+            font-weight: 800;
+            text-transform: lowercase;
+            font-size: 40pt;
+        }
+        body {
+            text-align:center;
+            background-image: url('../pics n stuff/burgerbackground.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
-<body style="text-align:center;">
+<body >
     <h1>Sign Up</h1>
     <p>Get ready to start munching.</p>
     <form style="margin: 0 10%;" method="post"> 
