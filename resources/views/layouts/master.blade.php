@@ -36,6 +36,7 @@
         <div class="collapse navbar-collapse" id="mainNavCollapse">
 
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="/login">Login</a></li>
                 <li><a href="/">Home</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->

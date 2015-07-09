@@ -27,7 +27,21 @@
         .form-group.required .control-label:after {
             content:"*";
             color:red;
-        }   
+        } 
+        footer {
+            font-family: 'Helvetica-Neue', sans-serif;
+            font-weight: 200;
+            margin-top: 3em;
+        }
+        a {
+            font-weight: 400;
+            color: #ff4e00; 
+        }
+        a:hover {
+            text-decoration: none;
+            font-weight: bold;
+            color: #c33c00;
+        }
     </style>
 </head>
 <body >
@@ -64,7 +78,8 @@
 <!-- Submit button -->
     <input type="submit" value="Submit" style="background-color: #f9423a; border: 0; border-radius: 10%;" class="btn btn-primary btn-lg"/>
     </form>
-        
+
+    <footer>Already a member? <a href="/">Login here.</a></footer>
     <script src=""></script>  
 </body>
 </html>
