@@ -6,7 +6,6 @@
 @import 'components/card';
 @import 'pages/place';
 
-body { padding-top: 70px; }
 .logo {
     font-family: 'Patua One', cursive;
     font-size: 2em;
@@ -31,6 +30,26 @@ body { padding-top: 70px; }
 
     i {
       line-height: 50px;
+    }
+  }
+}
+
+.munchable-left-menu {
+  background-color: #f9423a;
+  h3 {
+    color: white;
+    font-family: 'Patua One', cursive;
+    background: darken(#f9423a, 10%);
+  }
+  a {
+    border-color: $gray-lighter;
+
+    &:hover {
+      background: darken(#f9423a, 5%);
+    }
+
+    &:active, &:visited {
+      color: white;
     }
   }
 }

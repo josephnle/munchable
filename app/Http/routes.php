@@ -22,6 +22,11 @@ Route::get('/place', function () {
     return view('place');
 });
 
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
 //Route::group(['prefix' => 'api'], function() {
 //    Route::get('search', 'PlacesController@search');
 //});
