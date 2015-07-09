@@ -135,16 +135,26 @@
 		return round(($venue['location']['distance'])/1609.34,1);
 	}
 
+	function tipFromInfo($tipInfo)
+	{
+		if(isset($tipInfo['text']))
+		{
+			return $tipInfo['text'];
+		}
+	}
+
 	function getTips($foursquare, $venue)
 	{
 		$venue2 = venueByID($foursquare,$venue);
 		if (isset($venue2['response']['venue']['tips']['groups'][0]['items']))
 		{
-			return $venue2['response']['venue']['tips']['groups'][0]['items'];
+			$tipInfoArray = $venue2['response']['venue']['tips']['groups'][0]['items'];
+			$tipArray = array_map("tipFromInfo", $tipInfoArray);
+			return $tipArray;
 		}
 	}
 
-	function getPhotos($foursquare, $venue)
+	function getPhotoInfoArray($foursquare, $venue)
 	{
 		$venue2 = venueByID($foursquare, $venue);
 		if (isset($venue2['response']['venue']['photos']['groups'][0]['items']))
@@ -165,8 +175,9 @@
 	//$venue = venueSearch($foursquare, $defaultarray)[5];
 
 	//var_dump($venue['name']);
+	//var_dump(getTips($foursquare, $venue));
 	//echo getPrice($foursquare, $venue)."\n";
-	//var_dump(getPhotos($foursquare, $venue));
+	//var_dump(getTips($foursquare, $venue));
 
 
 ?>
