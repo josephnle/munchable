@@ -19,3 +19,7 @@ Route::get('/login', function () {
     return view('loginreg');
 });
 
+Route::get('/place', function () {
+    return view('place');
+});
+

@@ -1,6 +1,6 @@
 // Main JS file
 $(document).ready(function() {
-  $('.panel-slider').slick({
+  $('.place-slider').slick({
     arrows: false
   });
 });
