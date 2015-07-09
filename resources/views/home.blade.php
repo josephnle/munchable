@@ -28,7 +28,7 @@
                                     </div>
                                     <div class="pull-right">
                                         <span>0.3 miles</span>
-                                        <span>SoMA</span>
+                                        <span>SoMa</span>
                                     </div>
                                 </div>
                             </div>
