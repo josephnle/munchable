@@ -11,4 +11,26 @@ body { padding-top: 70px; }
     font-family: 'Patua One', cursive;
     font-size: 2em;
     color: #f9423a;
+
+    &.logo-centered {
+        width: 100%;
+        text-align: center;
+        margin-left: 0 !important;
+    }
+}
+
+.navbar {
+  .menu-icon {
+    position: absolute;
+    left: 10px;
+    top: 0;
+
+    * {
+      color: white;
+    }
+
+    i {
+      line-height: 50px;
+    }
+  }
 }

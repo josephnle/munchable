@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'PlacesController@search');
 
 Route::get('/login', function () {
     return view('loginreg');
@@ -23,3 +21,6 @@ Route::get('/place', function () {
     return view('place');
 });
 
+//Route::group(['prefix' => 'api'], function() {
+//    Route::get('search', 'PlacesController@search');
+//});
