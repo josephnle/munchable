@@ -12,6 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 </head>
 <body>
@@ -21,24 +22,12 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavCollapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand logo" href="#">Munchable</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="mainNavCollapse">
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Home</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
+        <span class="menu-icon">
+            <a href="#">
+                <i class="fa fa-bars fa-2x"></i>
+            </a>
+        </span>
+        <a class="navbar-brand logo logo-centered" href="#">Munchable</a>
     </div><!-- /.container-fluid -->
 </nav>
 
