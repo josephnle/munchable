@@ -12,8 +12,18 @@
 	// Load the Foursquare API library
 	$foursquare = new FoursquareApi($client_key,$client_secret);
 
+	$uberclient = new Stevenmaguire\Uber\Client(array(
+		//'access_token' => 'ONAeycdFNH6uTiEl9bQrCVZwoM-9VAxu',
+    	'server_token' => 'bjfrsW0i-dusO4ojZH0zu9eHmX3Kr_pRub1fIZic',
+   		'use_sandbox'  => true, // optional, default false
+    	'version'      => 'v1', // optional, default 'v1'
+    	'locale'       => 'en_US', // optional, default 'en_US'
+    ));
+
 
 	$DEFAULT_LIMIT = 50;
+	$DEFAULT_START_LAT = 37.787302;
+	$DEFAULT_START_LNG = -122.397035;
 	$DEFAULT_LL = '37.787302, -122.397035';
 	$DEFAULT_RADIUS = 500;
 	$FOODID = '4d4b7105d754a06374d81259';
@@ -21,6 +31,8 @@
 	$DEFAULT_CATEGORYID = $FOODID;
 
 	$defaultarray = array("ll"=>$DEFAULT_LL,"radius"=>$DEFAULT_RADIUS,"section"=>'food');
+
+
 
 	function buildParamArray($currentlocation, $radius)
 	{
@@ -194,13 +206,38 @@
 		}
 	}
 
-	$venue = venueSearch($foursquare, $defaultarray)[1];
+	function uberPriceEstimate($uberclient, $venue, $currentlat, $currentlng)
+	{
+		$estimates = $uberclient->getPriceEstimates(array(
+			'start_latitude' => $currentlat,
+    		'start_longitude' => $currentlng,
+    		'end_latitude' => $venue['location']['lat'],
+    		'end_longitude' => $venue['location']['lng']
+		));
+		return $estimates->prices[0]->estimate;
+	}
 
-	var_dump($venue['name']);
+	//returns around when the uber will arrive
+	function uberTimeEstimate($uberclient, $currentlat, $currentlng)
+	{
+		$estimates = $uberclient->getTimeEstimates(array(
+			'start_latitude' => $currentlat,
+			'start_longitude' => $currentlng));
+		$timeSeconds = $estimates->times[0]->estimate;
+		$time = round(($timeSeconds/60.0));
+		return $time;
+	}
 
-	var_dump(getPhotos($foursquare, $venue));
-	echo getDistance($venue)."\n";
-	var_dump(getTips($foursquare, $venue));
+
+	//$venue = venueSearch($foursquare, $defaultarray)[1];
+
+	//var_dump($venue['name']);
+
+	//var_dump(uberTimeEstimate($uberclient, $DEFAULT_START_LAT, $DEFAULT_START_LNG));
+
+	//var_dump(getPhotos($foursquare, $venue));
+	//echo getDistance($venue)."\n";
+	//var_dump(getTips($foursquare, $venue));
 
 
 	//$venuesjson = $foursquare->GetPublic('venues/explore', $defaultarray, $POST=false);
