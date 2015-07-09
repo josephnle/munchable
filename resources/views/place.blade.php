@@ -42,23 +42,19 @@
             <div class="place-option">
                 <img class="logo" src="{{ asset('img/logo/uber_logo.png') }}" />
                 <div class="name">Uber</div>
-                <div class="info">12 mins</div>
+                <div class="info">3 mins &bull; $12-$16</div>
             </div>
 
             <div class="place-option">
                 <img class="logo" src="{{ asset('img/logo/postmates_logo.png') }}" />
                 <div class="name">Postmates</div>
-                <div class="info">12 mins</div>
+                <div class="info"></div>
             </div>
 
             <div class="place-option">
                 <img class="logo" src="{{ asset('img/logo/gmaps_logo.png') }}" />
                 <div class="name">Maps</div>
                 <div class="info">12 mins</div>
-            </div>
-
-            <div class="place-option">
-                <div class="name text-center">OpenTable</div>
             </div>
         </div>
     </div>
