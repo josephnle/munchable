@@ -23,3 +23,6 @@ Route::get('/place', function () {
     return view('place');
 });
 
+Route::group(['prefix' => 'api'], function() {
+    Route::get('search', 'PlacesController@search');
+});
