@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.0/slick.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('bower_components/jPushMenu/css/jPushMenu.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/animate.css/animate.min.css') }}">
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 </head>
 <body>
