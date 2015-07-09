@@ -39,14 +39,11 @@ class PlacesController extends Controller
 
         if (isset($options)) {
             $results = array_map(function($result) use ($options) {
+                $result['category'] = $this->getCategory($result);
+                $result['price'] = str_repeat('$', $this->getPrice($result));
+
                 foreach($options as $option) {
                     switch ($option) {
-                        case 'price':
-                            $result['price'] = $this->getPrice($result);
-                            break;
-                        case 'category':
-                            $result['category'] = $this->getCategory($result);
-                            break;
                         case 'tips':
                             $result['tips'] = $this->getTips($result);
                             break;
@@ -59,17 +56,27 @@ class PlacesController extends Controller
             }, $results);
         }
 
-        return json_encode($results);
+        $results = array_map(function($result) {
+            $link = $result['photos']['groups'][0]['items'][0]['prefix'] . 'original' .
+                $result['photos']['groups'][0]['items'][0]['suffix'];
+
+            $result['photo'] = $link;
+
+            return $result;
+        }, $results);
+
+        return view('home', compact('results'));
     }
 
 
     //===========================
 
-    private function buildParamArray($currentlocation, $radius, $offset)
+    private function buildParamArray($currentlocation, $radius, $limit, $offset=0)
     {
 //        $radius = $radius*1609.34;
 
-        return $paramarray = array('ll'=>$currentlocation, 'radius' => $radius, 'section'=>'food', 'offset'=>$offset);
+        return $paramarray = array('ll'=>$currentlocation, 'radius' => $radius, 'limit' => $limit, 'section'=>'food',
+        'offset'=>$offset, 'venuePhotos' => 1);
     }
 
     private function venueSearch($paramarray)
@@ -173,10 +180,9 @@ class PlacesController extends Controller
      */
     private function getPrice($venue)
     {
-        $venue2 = $this->venueByID($venue);
-        if (isset($venue2['response']['venue']['price']))
+        if (isset($venue['price']))
         {
-            return $venue2['response']['venue']['price']['tier'];
+            return $venue['price']['tier'];
         }
         return null;
     }
