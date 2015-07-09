@@ -13,9 +13,9 @@ class PlacesController extends Controller
     protected $foursquare;
     protected $defaultArray;
 
-    private static $DEFAULT_LIMIT = 50;
+    private static $DEFAULT_LIMIT = 10;
     private static $DEFAULT_LL = '37.787302, -122.397035';
-    private static $DEFAULT_RADIUS = 500;
+    private static $DEFAULT_RADIUS = 250;
     private static $FOODID = '4d4b7105d754a06374d81259';
     private static $DEFAULT_CATEGORYID = '4d4b7105d754a06374d81259';
 
@@ -29,10 +29,9 @@ class PlacesController extends Controller
     public function search()
     {
         $params = $this->buildParamArray(
-            self::$DEFAULT_LL,
-            self::$DEFAULT_RADIUS,
-            'Food',
-            \Request::get('limit'));
+            \Request::get('ll', self::$DEFAULT_LL),
+            \Request::get('radius', self::$DEFAULT_RADIUS),
+            \Request::get('limit', self::$DEFAULT_LIMIT));
 
         $options = explode(',', \Request::get('with'));
 
@@ -66,28 +65,25 @@ class PlacesController extends Controller
 
     //===========================
 
-    private function buildParamArray($currentLocation, $radius, $category, $limit)
+    private function buildParamArray($currentlocation, $radius, $offset)
     {
-        $radius = $radius*1609.34;
+//        $radius = $radius*1609.34;
 
-        if($category == 'Food')
-        {
-            $categoryId = '4d4b7105d754a06374d81259';
-        }
-        else if($category == 'Restaurant')
-        {
-            $categoryId = '4bf58dd8d48988d1c4941735';
-        }
-
-        return array('ll'=>$currentLocation, 'radius'=>$radius, 'categoryId'=>$categoryId, 'limit' => $limit);
+        return $paramarray = array('ll'=>$currentlocation, 'radius' => $radius, 'section'=>'food', 'offset'=>$offset);
     }
 
-    private function venueSearch($params)
+    private function venueSearch($paramarray)
     {
-        $venuesJson = $this->foursquare->GetPublic('venues/search', $params, $POST=false);
-        $venues = json_decode($venuesJson, true);
+        $venuesjson = $this->foursquare->GetPublic('venues/explore', $paramarray, $POST=false);
+        $venues = json_decode($venuesjson, true);
 
-        return $venues['response']['venues'];
+        $itemsArray = $venues['response']['groups'][0]['items'];
+        $venues = array_map(function($item)
+        {
+            return $item['venue'];
+        }, $itemsArray);
+
+        return $venues;
     }
 
     /**
