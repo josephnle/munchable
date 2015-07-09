@@ -49,7 +49,20 @@ class PlacesController extends Controller
 
     public function showSaved()
     {
-        $places = \Auth::user()->savedPlaces;
+        $venues = \Auth::user()->savedPlaces;
+
+        $places = [];
+
+        foreach($venues as $venue)
+        {
+            $place = $this->searchVenueByID($venue->venue_id);
+            $link = $place['photos']['groups'][0]['items'][0]['prefix'] . 'original' .
+                $place['photos']['groups'][0]['items'][0]['suffix'];
+            $place['photo'] = $link;
+            $place['category'] = $this->getCategory($place);
+            $place['price'] = str_repeat('$', $this->getPrice($place));
+            $places[] = $place;
+        }
 
         return view('saved', compact('places'));
     }
