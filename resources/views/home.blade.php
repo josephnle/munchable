@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="cover-image"
-                                 style="background: url('http://lorempixel.com/400/400/food');background-size: cover;
+                                 style="background: url('http://lorempixel.com/800/800/food');background-size: cover;
                                  width: 100%;">
                             </div>
                         </div>
