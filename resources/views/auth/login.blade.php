@@ -4,7 +4,7 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <title>Sign Up</title>
+    <title>Login</title>
     <style>
         p {
             font-size: 13pt;
@@ -45,30 +45,22 @@
     </style>
 </head>
 <body >
-    <h1>Sign Up</h1>
+    <h1>Login</h1>
     <p>Munch through the 6 with your woes.</p>
-    <form style="margin: 0 20%;" method="post"> 
+    <form style="margin: 0 20%;" method="post" action="{{ action('Auth\AuthController@postLogin') }}">
+        {!! csrf_field() !!}
         
-<!-- First and Last Name --> 
+<!-- Name -->
 <div class= "form-group required" style="width=75%;">
-    <fieldset style="text-align: left;" class="form-group">   
-        <p>
-            <label class="control-label" for="first-name">First Name<span class="required"></span></label>
-            <input type="text" id="first-name" name="first_name" placeholder="Aubrey Drake" class="form-control" required="required" aria-required="true"/>
-        </p>
-        <p>
-            <label class="control-label" for="last-name">Last Name<span class="required"></span></label>
-            <input type="text" id="last-name" name="last_name" placeholder="Graham" class="form-control" required="required" aria-required="true"/>
-        </p>
-
+    <fieldset style="text-align: left;" class="form-group">
 <!-- Email Address -->  
         <p>
             <label class="control-label" for="email">Email Address<span class="required"></span></label>
-            <input type="text" id="email" name="email" placeholder="6god@gmail.com" class="form-control" required="required" aria-required="true"/>
+            <input type="text" id="email" name="email" placeholder="6god@gmail.com" class="form-control" required="required" aria-required="true" value="{{ old('email') }}"/>
         </p>
 
 <!-- Password -->  
-        <p class=>
+        <p>
             <label class="control-label" for="password">Password<span class="required"></span></label>
             <input type="password" id="password" name="password" placeholder="Password" class="form-control" required="required" aria-required="true"/>
         </p>
@@ -76,10 +68,10 @@
 </div>
     
 <!-- Submit button -->
-    <input type="submit" value="Submit" style="background-color: #f9423a; border: 0; border-radius: 10%;" class="btn btn-primary btn-lg"/>
+    <input type="submit" value="Login" style="background-color: #f9423a; border: 0; border-radius: 10%;" class="btn btn-primary btn-lg"/>
     </form>
 
-    <footer>Already a member? <a href="/">Login here.</a></footer>
+    <footer>Not a member? <a href="{{ action('Auth\AuthController@getRegister') }}">Signup here.</a></footer>
     <script src=""></script>  
 </body>
 </html>
