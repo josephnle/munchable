@@ -26,6 +26,17 @@ class PlacesController extends Controller
             "categoryId"=>self::$DEFAULT_CATEGORYID);
     }
 
+    public function show($id)
+    {
+        $place = $this->searchVenueByID($id);
+        $place['category'] = $this->getCategory($place);
+        $place['price'] = str_repeat('$', $this->getPrice($place));
+        $place['tips'] = array_slice($place['tips']['groups'][0]['items'], 0, 4);
+        $place['photos'] = $place['photos']['groups'][0]['items'];
+
+        return view('place', compact('place'));
+    }
+
     public function search()
     {
         $params = $this->buildParamArray(
@@ -103,6 +114,18 @@ class PlacesController extends Controller
         $venueJson = $this->foursquare->GetPublic('venues/'.$venue['id']);
         $venue = json_decode($venueJson, true);
         return $venue;
+    }
+
+    /**
+     * Gets venue by ID
+     * @param $venue
+     * @return mixed
+     */
+    private function searchVenueByID($id)
+    {
+        $venueJson = $this->foursquare->GetPublic('venues/'.$id);
+        $venue = json_decode($venueJson, true);
+        return $venue['response']['venue'];
     }
 
     /**

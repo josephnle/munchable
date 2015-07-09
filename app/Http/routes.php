@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PlacesController@search');
+Route::get('/places/{id}', 'PlacesController@show');
 
 Route::get('/login', function () {
     return view('loginreg');

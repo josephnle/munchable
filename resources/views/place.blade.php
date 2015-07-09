@@ -4,27 +4,22 @@
     <div class="container-fluid container-full">
         <div class="place">
             <div class="place-slider" style="width: 100%;">
-                <div>
-                    <img class="place-slide" src="http://lorempixel.com/1000/400/food" alt="" />
+                @foreach($place['photos'] as $photo)
+                <div class="text-center place-slide">
+                    <img class="place-img" src="{{ $photo['prefix'] . '500x500' . $photo['suffix'] }}" alt="" />
                 </div>
-                <div>
-                    <img class="place-slide" src="http://lorempixel.com/1000/200/food" alt="" />
-                </div>
+                @endforeach
             </div>
 
             <div class="place-content-header">
                 <div class="place-content-header-title">
-                    <h2>Dragon Eats</h2>
-                    <span class="pull-right place-rating"><small>8.9</small></span>
+                    <h2>{{ $place['name'] }}</h2>
+                    <span class="pull-right place-rating"><small>{{ $place['rating'] or 'N/A' }}</small></span>
                 </div>
                 <div class="place-content-header-meta">
                     <div>
-                        <span>Persian</span>
-                        <span>$$$</span>
-                    </div>
-                    <div class="pull-right">
-                        <span>450ft</span>
-                        <span>SoMA</span>
+                        <span>{{ $place['category'] }}</span>
+                        <span>{{ $place['price'] or '' }}</span>
                     </div>
                 </div>
             </div>
@@ -35,12 +30,11 @@
                         Highlights
                     </div>
                     <div class="panel-body tips">
+                        @foreach($place['tips'] as $tip)
                         <div class="tip">
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto deserunt dolorum eos error illum laborum neque numquam quae quo sequi, soluta ullam vero voluptas voluptatem. Debitis illo quaerat repellendus."
+                            "{{ $tip['text'] }}"
                         </div>
-                        <div class="tip">
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto deserunt dolorum eos error illum laborum neque numquam quae quo sequi, soluta ullam vero voluptas voluptatem. Debitis illo quaerat repellendus."
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

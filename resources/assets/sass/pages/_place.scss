@@ -5,10 +5,13 @@
 
 .place {
   .place-slider {
-    height: 40vh;
+    width: 100%;
 
     .place-slide {
-      height: 40vh;
+      background-color: $gray-darker;
+      .place-img {
+        width: 100%;
+      }
     }
   }
 
