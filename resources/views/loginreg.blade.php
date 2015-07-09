@@ -7,13 +7,11 @@
     <title>Sign Up</title>
     <style>
         p {
-            text-transform: lowercase;
             font-size: 13pt;
             font-weight: 300;
         }
         h1 {
-            font-weight: 800;
-            text-transform: lowercase;
+            font-family: 'Patua One', cursive;
             font-size: 40pt;
         }
         body {
@@ -21,36 +19,44 @@
             background-image: url('../pics n stuff/burgerbackground.png'); 
             background-size: cover;
             background-repeat: no-repeat;
+            background-attachment: fixed;
         }
+        label {
+            font-family: 'Helvetica-Neue', sans-serif;
+        }
+        .form-group.required .control-label:after {
+            content:"*";
+            color:red;
+        }   
     </style>
 </head>
 <body >
     <h1>Sign Up</h1>
-    <p>Get ready to start munching.</p>
-    <form style="margin: 0 10%;" method="post"> 
+    <p>Munch through the 6 with your woes.</p>
+    <form style="margin: 0 20%;" method="post"> 
         
 <!-- First and Last Name --> 
-<div style="width=75%;">
+<div class= "form-group required" style="width=75%;">
     <fieldset style="text-align: left;" class="form-group">   
         <p>
-            <label for="first-name">First Name<span class="required"></span></label>
-            <input type="text" id="first-name" name="first_name" class="form-control" required="required" aria-required="true"/>
+            <label class="control-label" for="first-name">First Name<span class="required"></span></label>
+            <input type="text" id="first-name" name="first_name" placeholder="Aubrey Drake" class="form-control" required="required" aria-required="true"/>
         </p>
         <p>
-            <label for="last-name">Last Name<span class="required"></span></label>
-            <input type="text" id="last-name" name="last_name" class="form-control" required="required" aria-required="true"/>
+            <label class="control-label" for="last-name">Last Name<span class="required"></span></label>
+            <input type="text" id="last-name" name="last_name" placeholder="Graham" class="form-control" required="required" aria-required="true"/>
         </p>
 
 <!-- Email Address -->  
         <p>
-            <label for="email">Email Address<span class="required"></span></label>
-            <input type="text" id="email" name="email" class="form-control" required="required" aria-required="true"/>
+            <label class="control-label" for="email">Email Address<span class="required"></span></label>
+            <input type="text" id="email" name="email" placeholder="6god@gmail.com" class="form-control" required="required" aria-required="true"/>
         </p>
 
 <!-- Password -->  
         <p class=>
-            <label for="password">Password<span class="required"></span></label>
-            <input type="password" id="password" name="password" class="form-control" required="required" aria-required="true"/>
+            <label class="control-label" for="password">Password<span class="required"></span></label>
+            <input type="password" id="password" name="password" placeholder="Password" class="form-control" required="required" aria-required="true"/>
         </p>
     </fieldset> 
 </div>

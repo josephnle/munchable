@@ -23,11 +23,11 @@
                                 </div>
                                 <div class="content-header-meta">
                                     <div>
-                                        <span>Persian</span>
-                                        <span>$$$</span>
+                                        <span>Vietnamese</span>
+                                        <span>$</span>
                                     </div>
                                     <div class="pull-right">
-                                        <span>450ft</span>
+                                        <span>0.3 miles</span>
                                         <span>SoMA</span>
                                     </div>
                                 </div>
