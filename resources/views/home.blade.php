@@ -38,6 +38,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <a class="save-place-button pull-right" data-venue="{{ $result['id']
+                                }}"><i class="fa fa-heart-o fa-lg"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

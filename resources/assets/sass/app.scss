@@ -53,3 +53,12 @@
     }
   }
 }
+
+.save-place-button {
+  padding: 5px 10px;
+  color: $gray-dark;
+
+  &:active, &:visited {
+    color: $gray-dark;
+  }
+}

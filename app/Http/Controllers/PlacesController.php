@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\SavedPlace;
+
 class PlacesController extends Controller
 {
 
@@ -35,6 +37,21 @@ class PlacesController extends Controller
         $place['photos'] = $place['photos']['groups'][0]['items'];
 
         return view('place', compact('place'));
+    }
+
+    public function save()
+    {
+        SavedPlace::create([
+            'user_id' => \Auth::id(),
+            'venue_id' => \Request::get('venue_id')
+        ]);
+    }
+
+    public function showSaved()
+    {
+        $places = \Auth::user()->savedPlaces;
+
+        return view('saved', compact('places'));
     }
 
     public function search()

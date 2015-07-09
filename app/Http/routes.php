@@ -18,15 +18,13 @@ Route::get('/login', function () {
     return view('loginreg');
 });
 
-Route::get('/place', function () {
-    return view('place');
-});
+Route::get('/saved', 'PlacesController@showSaved');
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
-//Route::group(['prefix' => 'api'], function() {
-//    Route::get('search', 'PlacesController@search');
-//});
+Route::group(['prefix' => 'api'], function() {
+    Route::post('save', 'PlacesController@save');
+});
