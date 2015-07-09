@@ -1,0 +1,94 @@
+.card {
+  opacity: 1;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 6px $gray-darker;
+  margin: 15px;
+  padding: 0;
+  z-index: 100;
+
+  .info {
+    small {
+      color: darken(white, 10%);
+    }
+  }
+
+  .content {
+    padding: 0 10px;
+
+    .content-header {
+      margin: 10px 0;
+
+      h2 {
+        display: inline-block;
+        margin: 0;
+      }
+
+      .rating {
+        background-color: green;
+        border-radius: 5px;
+        color: white;
+        padding: 2px;
+
+        * {
+          color: white;
+        }
+      }
+
+      .content-header-title {
+        display: block;
+        margin-bottom: 3px;
+      }
+
+      .content-header-meta {
+        display: block;
+        margin-top: 2px;
+        font-size: $font-size-base * 0.75;
+
+        * {
+          display: inline-block;
+        }
+      }
+
+    }
+
+  }
+
+  .cover-image {
+    position: relative;
+    background-position: center;
+    height: 60vh;
+    width: 100%;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+
+    h2 {
+      position: absolute;
+      width: 100%;
+      margin: 0;
+      padding: 10px 5%;
+      bottom: 0;
+      color: white;
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+
+a > .card{
+  box-shadow: 0 0 3px $gray-darker;
+  transition: box-shadow .4s;
+
+  &:hover {
+    box-shadow: 0 0 8px $gray-darker;
+    transition: box-shadow .4s;
+  }
+}

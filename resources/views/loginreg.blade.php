@@ -6,40 +6,39 @@
     <meta charset="utf-8">
     <title>Sign Up</title>
 </head>
-<body>
+<body style="text-align:center;">
     <h1>Sign Up</h1>
-    <form method="post"> <!-- *****action="http://htmlcssvqs.com/8ed/examples/chapter-16/show-data.php" enctype="multipart/form-data"-->
-
-<!-- First and Last Name --> 
-    <fieldset>   
-        <p class="row">
-            <label for="first-name">First Name<span class="required"></span></label>
-            <input type="text" id="first-name" name="first_name" class="field-large" required="required" aria-required="true"/>
-        </p>
-        <p class="row">
-            <label for="last-name">Last Name<span class="required"></span></label>
-            <input type="text" id="last-name" name="last_name" class="field-large" required="required" aria-required="true"/>
-        </p>
-    </fieldset> 
-
-<!-- Email Address -->
-    <fieldset>   
-        <p class="row">
-            <label for="email">Email Address<span class="required"></span></label>
-            <input type="text" id="email" name="email" class="field-large" required="required" aria-required="true"/>
-        </p>
-    </fieldset>
-
-<!-- Password --> 
-    <fieldset>   
-        <p class="row">
-            <label for="password">Password<span class="required"></span></label>
-            <input type="password" id="password" name="password" class="field-large" required="required" aria-required="true"/>
-        </p>
-    </fieldset> 
+    <p>Get ready to start munching.</p>
+    <form style="margin: 0 10%;" method="post"> 
         
+<!-- First and Last Name --> 
+<div style="width=75%;">
+    <fieldset style="text-align: left;" class="form-group">   
+        <p>
+            <label for="first-name">First Name<span class="required"></span></label>
+            <input type="text" id="first-name" name="first_name" class="form-control" required="required" aria-required="true"/>
+        </p>
+        <p>
+            <label for="last-name">Last Name<span class="required"></span></label>
+            <input type="text" id="last-name" name="last_name" class="form-control" required="required" aria-required="true"/>
+        </p>
+
+<!-- Email Address -->  
+        <p>
+            <label for="email">Email Address<span class="required"></span></label>
+            <input type="text" id="email" name="email" class="form-control" required="required" aria-required="true"/>
+        </p>
+
+<!-- Password -->  
+        <p class=>
+            <label for="password">Password<span class="required"></span></label>
+            <input type="password" id="password" name="password" class="form-control" required="required" aria-required="true"/>
+        </p>
+    </fieldset> 
+</div>
+    
 <!-- Submit button -->
-    <input type="submit" value="Submit" class="btn"/>
+    <input type="submit" value="Submit" style="background-color: #f9423a; border: 0; border-radius: 10%;" class="btn btn-primary btn-lg"/>
     </form>
         
     <script src=""></script>  

@@ -25,7 +25,6 @@ elixir(function(mix) {
    })
    .copy(paths.bootstrap + 'fonts/bootstrap/**', 'public/fonts')
    .scripts([
-    paths.jquery + "dist/jquery.js",
     paths.bootstrap + "javascripts/bootstrap.js",
     './resources/assets/js/**/*.js'
    ], 'public/js/app.js', './')
